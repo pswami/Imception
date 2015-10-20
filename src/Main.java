@@ -30,8 +30,9 @@ public class Main {
             System.out.println("IOException Occurred");
         }
 
-        for (int i = 0; i < largeImg.getWidth() - smallImg.getWidth(); i++) {
-            for (int j = 0; j < largeImg.getHeight() - largeImg.getHeight(); j++) {
+        for (int i = 0; i < largeImg.getWidth() - smallImg.getWidth(); i++) { //x
+            for (int j = 0; j < largeImg.getHeight() - smallImg.getHeight(); j++) { //y
+                System.out.println("x: " + i + " y: " + j);
                 if (imageEquals(smallImg, largeImg.getSubimage(i, j, smallImg.getWidth(), smallImg.getHeight())))
                     return true;
             }
@@ -52,3 +53,5 @@ public class Main {
         return true;
     }
 }
+
+//This is just java image support native
