@@ -2,6 +2,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -30,11 +31,12 @@ public class Main {
             System.out.println("IOException Occurred");
         }
 
-        for (int i = 0; i < largeImg.getWidth() - smallImg.getWidth(); i++) { //x
-            for (int j = 0; j < largeImg.getHeight() - smallImg.getHeight(); j++) { //y
-                System.out.println("x: " + i + " y: " + j);
-                if (imageEquals(smallImg, largeImg.getSubimage(i, j, smallImg.getWidth(), smallImg.getHeight())))
+        for (int i = 0; i < largeImg.getWidth() - smallImg.getWidth(); i++) {
+            for (int j = 0; j < largeImg.getHeight() - smallImg.getHeight(); j++) {
+                if (imageEquals(smallImg, largeImg.getSubimage(i, j, smallImg.getWidth(), smallImg.getHeight()))) {
+                    System.out.println("height: " + j + " width: " + i);
                     return true;
+                }
             }
         }
 
@@ -53,5 +55,3 @@ public class Main {
         return true;
     }
 }
-
-//This is just java image support native
