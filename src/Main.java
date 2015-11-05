@@ -2,7 +2,6 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -36,8 +35,11 @@ public class Main {
             System.out.println("IOException Occurred");
         }
 
-        for (int i = 0; i < largeImg.getWidth() - smallImg.getWidth(); i++) {
-            for (int j = 0; j < largeImg.getHeight() - smallImg.getHeight(); j++) {
+        int heightDiff = largeImg.getWidth() - smallImg.getWidth();
+        int widthDiff = largeImg.getHeight() - smallImg.getHeight();
+
+        for (int i = 0; i < heightDiff; ++i) {
+            for (int j = 0; j < widthDiff; ++j) {
                 if (imageEquals(smallImg, largeImg, i, j)) {
                     return true;
                 }
@@ -48,8 +50,8 @@ public class Main {
     }
 
     public static boolean imageEquals(BufferedImage image1, BufferedImage image2, int image2x, int image2y) {
-        for (int y = 0; y < image1.getHeight(); y++) {
-            for (int x = 0; x < image1.getWidth(); x++) {
+        for (int y = 0; y < image1.getHeight(); ++y) {
+            for (int x = 0; x < image1.getWidth(); ++x) {
                 if (image1.getRGB(x, y) != image2.getRGB(image2x + x, image2y + y)) {
                     return false;
                 }
