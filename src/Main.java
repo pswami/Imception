@@ -8,15 +8,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
-//
-//        System.out.print("Please enter the file name of the image to search within: ");
-//        String largeImgName = scanner.nextLine();
-//        System.out.print("Please enter the file name of the image to search for: ");
-//        String smallImgName = scanner.nextLine();
+        Scanner scanner = new Scanner(System.in);
 
-        String largeImgName = "OneRow.png";
-        String smallImgName = "Waldo.png";
+        System.out.print("Please enter the file name of the image to search within: ");
+        String largeImgName = scanner.nextLine();
+        System.out.print("Please enter the file name of the image to search for: ");
+        String smallImgName = scanner.nextLine();
+
 
         if (!containsImage(largeImgName, smallImgName))
            System.out.print("The smaller image was not found in the larger image.");
@@ -52,20 +50,13 @@ public class Main {
                     //draw box, 2 pixels wide for visibility
                     for (int x = i; x < i + smImgWidth; x++) {
                         resultImg.setRGB(x, j, Color.GREEN.getRGB());
-                        resultImg.setRGB(x, j - 1, Color.GREEN.getRGB());
+                        resultImg.setRGB(x, j + smImgHeight, Color.GREEN.getRGB());
                     }
                     for (int y = j; y < j + smImgHeight; y++) {
                         resultImg.setRGB(i, y, Color.GREEN.getRGB());
-                        resultImg.setRGB(i - 1, y, Color.GREEN.getRGB());
-                    }
-                    for (int x = i; x < i + smImgWidth; x++) {
-                        resultImg.setRGB(x, j + smImgHeight, Color.GREEN.getRGB());
-                        resultImg.setRGB(x, j + smImgHeight + 1, Color.GREEN.getRGB());
-                    }
-                    for (int y = j; y < j + smImgHeight; y++) {
                         resultImg.setRGB(i + smImgWidth, y, Color.GREEN.getRGB());
-                        resultImg.setRGB(i + smImgWidth + 1, y, Color.GREEN.getRGB());
                     }
+                    
                   
                     System.out.println("Waldo has been boxed and saved as foundWaldo.png\n");
                   
